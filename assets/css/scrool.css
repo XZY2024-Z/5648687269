@@ -1,0 +1,40 @@
+/* 美化侧边栏滚动条 */
+.main-menu-container::-webkit-scrollbar {
+    width: 4px; /* 滚动条宽度 */
+}
+
+.main-menu-container::-webkit-scrollbar-track {
+    background: transparent; /* 滚动条轨道背景透明 */
+    border-radius: 2px; /* 圆角 */
+}
+
+.main-menu-container::-webkit-scrollbar-thumb {
+    background: rgba(120, 120, 120, 0.3); /* 滚动条滑块颜色，半透明 */
+    border-radius: 2px; /* 圆角 */
+}
+
+.main-menu-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(120, 120, 120, 0.5); /* 鼠标悬停时颜色加深 */
+}
+
+/* Firefox浏览器滚动条样式 */
+.main-menu-container {
+    scrollbar-width: thin; /* 细滚动条 */
+    scrollbar-color: rgba(120, 120, 120, 0.3) transparent; /* 滑块颜色和轨道颜色 */
+}
+
+/* 确保菜单容器始终可滚动 */
+.main-menu-container {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+}
+
+/* 防止菜单点击时影响滚动 */
+.main-menu-container:focus {
+    outline: none;
+}
+
+/* 确保菜单项不会影响滚动 */
+.main-menu {
+    min-height: 100%;
+}

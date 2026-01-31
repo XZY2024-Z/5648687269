@@ -1,0 +1,156 @@
+{
+  "General": [
+    {
+      "name": "deepseek",
+      "url": "https://chat.deepseek.com/",
+      "logo": "deepseek.png",
+      "desc": "AI"
+    },
+    {
+      "name": "Switch520",
+      "url": "https://www.gamer520.com/",
+      "logo": "gamer520.png",
+      "desc": "Completely free game downloads"
+    },
+    {
+      "name": "ZLibrary",
+      "url": "https://zh.zlib.li/",
+      "logo": "zlib.ico",
+      "desc": "The world's largest digital library"
+    },
+    {
+      "name": "iloveimg",
+      "url": "https://www.iloveimg.com/",
+      "logo": "iloveimg.png",
+      "desc": "Super comprehensive image processing tools"
+    }
+  ],
+  "Recommendation": [
+    {
+      "name": "OFree",
+      "url": "",
+      "logo": "aliyun.png",
+      "desc": "Navigation for sharing free resources"
+    }
+  ],
+  "Games": [
+    {
+      "name": "小妖怪的游戏分享",
+      "url": "https://www.xyg688.com/",
+      "logo": "xiaoyaoguai.png",
+      "desc": "Completely free game download website"
+    },
+    {
+      "name": "Switch520",
+      "url": "https://www.gamer520.com/",
+      "logo": "gamer520.png",
+      "desc": "Completely free game download website"
+    },
+    {
+      "name": "P社系列游戏互助资源站",
+      "url": "https://share.paragames233.com/",
+      "logo": "Pshe.png",
+      "desc": "P社 series game download website"
+    },
+    {
+      "name": "蒸汽游戏宝库",
+      "url": "https://www.steambk.com/",
+      "logo": "蒸汽游戏宝库.ico",
+      "desc": "Completely free game download website"
+    },
+    {
+      "name": "Koyso",
+      "url": "https://koyso.com/",
+      "logo": "koyso.png",
+      "desc": "Completely free game download website"
+    },
+    {
+      "name": "flysheep资源避难所",
+      "url": "https://www.flysheep6.com/",
+      "logo": "flysheep.ico",
+      "desc": "Completely free game download website"
+    },
+    {
+      "name": "梨子乐游戏",
+      "url": "https://lzlgo.com/",
+      "logo": "lzlgo.ico",
+      "desc": "Completely free game download website"
+    },
+    {
+      "name": "Game Share",
+      "url": "https://www.gameshare.cc/",
+      "logo": "gameshare.png",
+      "desc": "Completely free game download website"
+    },
+    {
+      "name": "蜂鸟资源站",
+      "url": "https://gamezys.cn/",
+      "logo": "gamezys.png",
+      "desc": "Game DLC patches, game tools, video resources"
+    }
+  ],
+  "Reading": [
+    {
+      "name": "金屋电子书",
+      "url": "https://pdfs.top/",
+      "logo": "金屋电子书.png",
+      "desc": "Free e-book downloads"
+    },
+    {
+      "name": "ZLibrary",
+      "url": "https://zh.zlib.li/",
+      "logo": "zlib.ico",
+      "desc": "The world's largest digital library"
+    },
+    {
+      "name": "ZLibrary入口网站",
+      "url": "https://zlib.wwwnav.com/",
+      "logo": "zlib.ico",
+      "desc": "ZLibrary portal, including official and mirror sites"
+    },
+    {
+      "name": "识典古籍",
+      "url": "https://www.shidianguji.com/",
+      "logo": "shidianguji.png",
+      "desc": "Ancient books online reading"
+    }
+  ],
+  "Tools": [
+    {
+      "name": "11zon",
+      "url": "https://bigimage.11zon.com/",
+      "logo": "11zon.ico",
+      "desc": "PDF, image, converter tools"
+    },
+    {
+      "name": "MATE.Tools",
+      "url": "https://mate.tools/",
+      "logo": "mate.png",
+      "desc": "Super comprehensive free online tools"
+    },
+    {
+      "name": "ToolFoundry",
+      "url": "https://tools.aihezi.chat/",
+      "logo": "aihezi.png",
+      "desc": "Lightweight online practical tools"
+    },
+    {
+      "name": "Magic Eraser",
+      "url": "https://magiceraser.org/",
+      "logo": "magiceraser.png",
+      "desc": "Image processing"
+    },
+    {
+      "name": "iloveimg",
+      "url": "https://www.iloveimg.com/",
+      "logo": "iloveimg.png",
+      "desc": "Super comprehensive image processing tools"
+    },
+    {
+      "name": "hellotik",
+      "url": "https://www.hellotik.app/",
+      "logo": "hellotik.ico",
+      "desc": "Super comprehensive online video download tools"
+    }
+  ]
+}
