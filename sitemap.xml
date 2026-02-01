@@ -3,8 +3,15 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+    <url>
+        <loc>https://2026.xzyofree.dpdns.org/index.html</loc>
+        <lastmod>2026-01-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>1.0</priority>
+    </url>
     
-    <!-- 首页 -->
+    <!-- 中文首页 -->
     <url>
         <loc>https://2026.xzyofree.dpdns.org/cn/index.html</loc>
         <lastmod>2026-01-15</lastmod>
