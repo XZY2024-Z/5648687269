@@ -105,6 +105,12 @@
       "url": "https://www.kungal.com/",
       "logo": "kungal.ico",
       "desc": "You know, my brother"
+    },
+    {
+      "name": "AnkerGames",
+      "url": "https://ankergames.net/",
+      "logo": "ankergames.ico",
+      "desc": "国外免费的游戏下载网站，支持直链下载"
     }
 
   ],
