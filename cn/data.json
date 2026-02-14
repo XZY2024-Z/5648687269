@@ -87,6 +87,24 @@
       "url": "https://gamezys.cn/",
       "logo": "gamezys.png",
       "desc": "游戏DLC补丁、游戏工具、影视资源"
+    },
+    {
+      "name": "梓澪の妙妙屋",
+      "url": "https://gamezys.cn/",
+      "logo": "梓澪-icon.webp",
+      "desc": "You know, my brother"
+    },
+    {
+      "name": "Touchgal",
+      "url": "https://www.touchgal.top/",
+      "logo": "touchgal.ico",
+      "desc": "You know, my brother"
+    },
+    {
+      "name": "鲲 Galgame",
+      "url": "https://www.kungal.com/",
+      "logo": "kungal.ico",
+      "desc": "You know, my brother"
     }
 
   ],
