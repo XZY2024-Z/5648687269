@@ -654,6 +654,60 @@
   }
 
   /**
+   * 初始化移动端菜单
+   */
+  function initMobileMenu() {
+    const menuToggle = document.querySelector('.mobile-menu-toggle');
+    const sidebar = document.querySelector('.sidebar-menu');
+    const overlay = document.querySelector('.mobile-overlay');
+    
+    if (!menuToggle || !sidebar) return;
+    
+    // 菜单按钮点击
+    menuToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      sidebar.classList.toggle('open');
+      if (overlay) {
+        overlay.classList.toggle('active');
+      }
+    });
+    
+    // 遮罩点击关闭菜单
+    if (overlay) {
+      overlay.addEventListener('click', () => {
+        sidebar.classList.remove('open');
+        overlay.classList.remove('active');
+      });
+    }
+    
+    // 菜单项点击后关闭菜单
+    const menuLinks = sidebar.querySelectorAll('a');
+    menuLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth < 768) {
+          setTimeout(() => {
+            sidebar.classList.remove('open');
+            if (overlay) {
+              overlay.classList.remove('active');
+            }
+          }, 150);
+        }
+      });
+    });
+    
+    // 窗口大小改变时重置菜单状态
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 768) {
+        sidebar.classList.remove('open');
+        if (overlay) {
+          overlay.classList.remove('active');
+        }
+      }
+    });
+  }
+
+  /**
    * 主初始化函数
    */
   async function init() {
@@ -664,6 +718,7 @@
     initTheme();
     initFavorites();
     initShortcuts();
+    initMobileMenu();
     
     // 等待卡片渲染完成后添加收藏按钮
     const observer = new MutationObserver(() => {

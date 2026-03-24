@@ -802,35 +802,69 @@ body::after {
    响应式
    ============================================ */
 
-@media (max-width: 992px) {
+/* ============================================
+   响应式设计 - 平板和手机
+   ============================================ */
+
+/* 移动端菜单按钮 - 默认隐藏 */
+.mobile-menu-toggle {
+  display: none;
+}
+
+/* 移动端遮罩 - 默认隐藏 */
+.mobile-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.mobile-overlay.active {
+  display: block;
+}
+
+/* 侧边栏打开状态 */
+.sidebar-menu.open {
+  left: 0 !important;
+}
+
+/* 平板设备 (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* 侧边栏 */
+  .sidebar-menu {
+    width: 200px !important;
+  }
+  
+  .page-container {
+    padding-left: 200px !important;
+  }
+  
+  /* 页面标题 */
   .page-header {
     margin: 16px !important;
-    padding: 24px !important;
+    padding: 20px !important;
   }
   
   .page-header h1 {
-    font-size: 20px !important;
+    font-size: 18px !important;
   }
   
+  /* 分类容器 */
   .category-container {
     padding: 0 16px;
   }
   
-  .search-container {
-    padding: 0 16px !important;
+  /* 卡片网格 */
+  .xe-widget {
+    width: calc(50% - 12px) !important;
+  margin-bottom: 12px;
   }
   
-  .search-results {
-    left: 16px;
-    right: 16px;
-  }
-}
-
-@media (max-width: 768px) {
-  .search-shortcut {
-    display: none;
-  }
-  
+  /* 主题切换按钮 */
   .theme-toggle {
     bottom: 16px;
     right: 16px;
@@ -838,15 +872,259 @@ body::after {
     height: 44px;
   }
   
+  /* 快捷键提示 */
+  .shortcut-hint {
+    display: none;
+  }
+}
+
+/* 手机设备 (小于 768px) */
+@media (max-width: 767px) {
+  /* 隐藏侧边栏 - 从左侧滑出 */
+  .sidebar-menu {
+    position: fixed !important;
+    left: -280px !important;
+    width: 280px !important;
+    z-index: 1000;
+    transition: left 0.3s ease !important;
+    background: var(--bg-sidebar) !important;
+    box-shadow: none !important;
+  }
+  
+  /* 侧边栏打开状态 */
+  .sidebar-menu.open {
+    left: 0 !important;
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.3) !important;
+  }
+  
+  /* 侧边栏内部容器 */
+  .sidebar-menu-inner {
+    background: var(--bg-sidebar) !important;
+    height: 100% !important;
+  }
+  
+  /* 菜单容器 */
+  .main-menu-container {
+    height: calc(100vh - 20px) !important;
+    overflow-y: auto !important;
+    background: var(--bg-sidebar) !important;
+  }
+  
+  /* 主菜单 */
+  .main-menu {
+    background: var(--bg-sidebar) !important;
+    padding: 10px 12px !important;
+  }
+  
+  /* 主容器 */
+  .page-container {
+    padding-left: 0 !important;
+  }
+  
+  /* 移动端菜单按钮 */
+  .mobile-menu-toggle {
+    display: flex !important;
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    width: 44px;
+    height: 44px;
+    background: var(--btn-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1001;
+    box-shadow: var(--btn-shadow);
+    transition: all 0.15s ease;
+  }
+  
+  .mobile-menu-toggle i {
+    color: var(--text-secondary);
+    font-size: 18px;
+  }
+  
+  .mobile-menu-toggle:hover {
+    color: var(--primary);
+  }
+  
+  /* 移动端遮罩 */
+  .mobile-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+  
+  .mobile-overlay.active {
+    display: block;
+  }
+  
+  /* 顶部导航 */
+  .user-info-navbar {
+    padding: 0 16px !important;
+    height: 56px !important;
+  }
+  
+  /* 页面标题 */
+  .page-header {
+    margin: 12px !important;
+    padding: 16px !important;
+  }
+  
+  .page-header h1 {
+    font-size: 16px !important;
+  }
+  
+  .page-header .lead {
+    font-size: 13px !important;
+  }
+  
+  /* 分类容器 - 添加左右边距 */
+  .category-container {
+    padding: 0 16px !important;
+    margin-bottom: 30px;
+  }
+  
+  .category-container h4 {
+    font-size: 13px !important;
+    margin-bottom: 12px !important;
+  }
+  
+  /* 卡片容器 - 确保有边距 */
+  .xe-widget {
+    margin: 0 0 16px 0 !important;
+    padding: 0 !important;
+  }
+  
+  /* 卡片 - 添加左右边距 */
+  .box2 {
+    padding: 12px !important;
+    min-height: 64px;
+    margin: 0 0 12px 0 !important;
+    border-radius: 10px !important;
+  }
+  
+  .xe-comment-entry img {
+    width: 36px !important;
+    height: 36px !important;
+    margin-right: 10px !important;
+  }
+  
+  .xe-user-name strong {
+    font-size: 13px !important;
+  }
+  
+  .xe-comment p {
+    font-size: 11px !important;
+  }
+  
+  /* 收藏按钮 */
+  .favorite-btn {
+    width: 24px;
+    height: 24px;
+    top: 6px;
+    right: 6px;
+  }
+  
+  /* 主题切换按钮 */
+  .theme-toggle {
+    bottom: 12px;
+    right: 12px;
+    width: 40px;
+    height: 40px;
+  }
+  
+  /* 收藏面板 */
   .favorites-panel {
     width: 100%;
     right: -100%;
   }
   
-  .shortcut-hint {
-    right: 16px;
+  /* 关于页面 */
+  .navbar.horizontal-menu .navbar-inner {
+    padding: 0 16px !important;
+  }
+  
+  .navbar-left {
     left: 16px;
-    text-align: center;
+  }
+  
+  .btn-home {
+    padding: 8px 16px !important;
+    font-size: 13px !important;
+  }
+  
+  .panel.panel-default {
+    margin: 12px !important;
+    padding: 16px !important;
+  }
+  
+  .panel-default h4.text-gray {
+    font-size: 14px !important;
+  }
+  
+  blockquote {
+    padding: 12px 16px !important;
+    font-size: 13px !important;
+  }
+  
+  /* 页脚 */
+  .main-footer {
+    padding: 12px !important;
+  }
+  
+  .footer-text {
+    font-size: 12px !important;
+  }
+}
+
+/* 小屏手机 (小于 480px) */
+@media (max-width: 480px) {
+  /* 页面标题 */
+  .page-header h1 {
+    font-size: 14px !important;
+  }
+  
+  /* 卡片 */
+  .xe-widget {
+    width: 100% !important;
+  }
+  
+  .box2 {
+    padding: 10px !important;
+  }
+  
+  .xe-comment-entry img {
+    width: 32px !important;
+    height: 32px !important;
+    margin-right: 8px !important;
+  }
+  
+  /* 关于页面 */
+  .btn-home {
+    padding: 6px 12px !important;
+    font-size: 12px !important;
+  }
+  
+  .btn-home i {
+    margin-right: 4px;
+  }
+}
+
+/* 横屏手机适配 */
+@media (max-width: 767px) and (orientation: landscape) {
+  .sidebar-menu {
+    width: 200px !important;
+  }
+  
+  .page-container {
+    padding-left: 200px !important;
   }
 }
 
