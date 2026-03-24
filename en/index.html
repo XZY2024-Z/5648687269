@@ -49,6 +49,8 @@
     <link rel="stylesheet" href="../assets/css/xenon-skins.css">
     <link rel="stylesheet" href="../assets/css/nav.css">
     <link rel="stylesheet" href="../assets/css/scrool.css">
+    <!-- 现代科技风样式 -->
+    <link rel="stylesheet" href="../assets/css/modern.css">
     <script src="../assets/js/jquery-1.11.1.min.js"></script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -262,27 +264,25 @@
     <!-- JavaScripts initializations and stuff -->
     <script src="../assets/js/xenon-custom.js"></script>
     <script src="../assets/js/lozad.js"></script>
+    <!-- 功能模块：搜索、暗黑模式、收藏 -->
+    <script src="../assets/js/features.js"></script>
     <script>
         // 页面完全加载后重新计算滚动容器高度
         window.addEventListener('load', function() {
             setTimeout(function() {
                 const container = document.querySelector('.main-menu-container');
                 if (container) {
-                    // 确保滚动容器高度正确
-                    const headerHeight = document.querySelector('.logo-env').offsetHeight;
+                    // Logo已隐藏，直接使用窗口高度
                     const windowHeight = window.innerHeight;
-                    container.style.height = (windowHeight - headerHeight - 20) + 'px';
-                    
-                    // 强制显示滚动条
+                    container.style.height = (windowHeight - 30) + 'px';
                     container.style.overflowY = 'auto';
                     container.style.overflowX = 'hidden';
                 }
-            }, 500);
+            }, 300);
         });
 
         // 防止菜单点击导致滚动容器失去焦点
         $(document).on('click', '.main-menu-container a', function(e) {
-            // 确保点击菜单项时滚动容器不会失去滚动能力
             e.stopPropagation();
         });
     </script>

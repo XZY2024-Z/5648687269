@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="../assets/css/xenon-components.css">
     <link rel="stylesheet" href="../assets/css/xenon-skins.css">
     <link rel="stylesheet" href="../assets/css/nav.css">
+    <!-- 现代简约风格 -->
+    <link rel="stylesheet" href="../assets/css/modern.css">
     <script src="../assets/js/jquery-1.11.1.min.js"></script>
     
     <script>
@@ -54,16 +56,18 @@
 <body class="page-body boxed-container">
     <nav class="navbar horizontal-menu navbar-fixed-top">
         <div class="navbar-inner">
-            <div class="navbar-brand">
-                <a href="index.html" class="logo">
-                    <img src="../assets/images/Ofree/inverted-image169.png" width="100%" alt="OFREE Logo" class="hidden-xs">
-                    <img src="../assets/images/Ofree/OnlyFree169x43.png" width="100%" alt="OFREE Logo" class="visible-xs">
+            <div class="navbar-left">
+                <a href="index.html" class="btn btn-home">
+                    <i class="fa fa-home"></i> Home
                 </a>
             </div>
             <div class="navbar-mobile-clear"></div>
-            <!-- <a href="https://github.com/WebStackPage/WebStackPage.github.io" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a> -->
         </div>
     </nav>
+    <!-- 主题切换按钮 - 右下角固定位置 -->
+    <button class="theme-toggle" title="Toggle Theme">
+        <i class="fa fa-moon-o"></i>
+    </button>
     <div class="page-container">
         <!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
         <div class="main-content">
@@ -144,7 +148,34 @@
     <script src="assets/js/xenon-toggles.js"></script>
     <!-- JavaScripts initializations and stuff -->
     <script src="assets/js/xenon-custom.js"></script>
-    <textarea tabindex="-1" style="position: absolute; top: -999px; left: 0px; right: auto; bottom: auto; border: 0px; padding: 0px; box-sizing: content-box; word-wrap: break-word; overflow: hidden; transition: none; height: 0px !important; min-height: 0px !important; font-family: Arimo, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 13px; font-weight: 400; font-style: normal; letter-spacing: 0px; text-transform: none; word-spacing: 0px; text-indent: 0px; line-height: 18.5714px; width: 53px;" class="autosizejs" id="autosizejs"></textarea>
+    <!-- 关于页面主题切换 -->
+    <script>
+    (function() {
+        // 初始化主题
+        const savedTheme = localStorage.getItem('ofree-theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        updateThemeIcon(savedTheme);
+        
+        // 主题切换按钮
+        const toggleBtn = document.querySelector('.theme-toggle');
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', function() {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('ofree-theme', newTheme);
+                updateThemeIcon(newTheme);
+            });
+        }
+        
+        function updateThemeIcon(theme) {
+            const icon = document.querySelector('.theme-toggle i');
+            if (icon) {
+                icon.className = theme === 'dark' ? 'fa fa-sun-o' : 'fa fa-moon-o';
+            }
+        }
+    })();
+    </script>
 </body>
 
 </html>
