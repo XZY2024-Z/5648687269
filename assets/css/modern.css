@@ -811,6 +811,21 @@ body::after {
   display: none;
 }
 
+/* 隐藏原来主题自带的移动端菜单按钮 */
+.logo-env .mobile-menu-toggle.visible-xs {
+  display: none !important;
+}
+
+/* 隐藏logo-env中的设置和菜单图标 */
+.logo-env .mobile-menu-toggle {
+  display: none !important;
+}
+
+/* 隐藏顶部导航栏的侧边栏切换按钮 */
+.user-info-menu.left-links li:first-child {
+  display: none !important;
+}
+
 /* 移动端遮罩 - 默认隐藏 */
 .mobile-overlay {
   display: none;
