@@ -18,6 +18,7 @@
   --bg-card-hover: #f1f5f9;
   
   --text-primary: #1e293b;
+  --text-color: #1e293b;
   --text-secondary: #64748b;
   --text-muted: #94a3b8;
   
@@ -50,6 +51,7 @@
   --bg-card-hover: #334155;
   
   --text-primary: #f1f5f9;
+  --text-color: #f1f5f9;
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
   
@@ -1485,6 +1487,10 @@ blockquote strong {
   .featured-articles-section {
     margin: 0 16px 20px 16px;
     padding: 16px;
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   }
   
   .featured-articles-section h4 {
@@ -1504,6 +1510,10 @@ blockquote strong {
   
   .featured-articles-grid .article-card {
     padding: 14px;
+    background: var(--bg-body) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
   }
   
   .featured-articles-grid .article-title {
@@ -1512,5 +1522,15 @@ blockquote strong {
   
   .featured-articles-grid .article-summary {
     font-size: 11px;
+  }
+  
+  .featured-articles-grid .article-category {
+    padding: 3px 8px;
+    font-size: 10px;
+  }
+  
+  .featured-articles-grid .article-tag {
+    padding: 2px 6px;
+    font-size: 9px;
   }
 }
