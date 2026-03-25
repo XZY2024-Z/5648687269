@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-8550836177608334",
+        enable_page_level_ads: true
+    });
+    </script>
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c05bb16ea908292af9f6c513087a1cc3";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "vbulalah2i");
+    </script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="xzy2026" />
+    <title>OFree 博客 - 免费资源指南</title>
+    <meta name="keywords" content="免费资源博客, 游戏资源, 工具推荐, 学习教程, 影视资源">
+    <meta name="description" content="OFree博客 - 发现优质免费资源，分享实用技巧，帮助你获取安全可靠的网络免费服务。">
+
+    <link rel="shortcut icon" href="../assets/images/Ofree/ofree64/inverted-O.png">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Arimo:400,700,400italic">
+    <link rel="stylesheet" href="../assets/css/fonts/linecons/css/linecons.css">
+    <link rel="stylesheet" href="../assets/css/fonts/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap.css">
+    <link rel="stylesheet" href="../assets/css/xenon-core.css">
+    <link rel="stylesheet" href="../assets/css/xenon-components.css">
+    <link rel="stylesheet" href="../assets/css/xenon-skins.css">
+    <link rel="stylesheet" href="../assets/css/nav.css">
+    <link rel="stylesheet" href="../assets/css/scrool.css">
+    <link rel="stylesheet" href="../assets/css/modern.css">
+    
+    <style>
+        /* 博客页面特定样式 */
+        .blog-header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, #60a5fa 100%);
+            border-radius: 16px;
+            margin: 20px 30px 30px 30px;
+            color: white;
+        }
+        
+        .blog-header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .blog-header p {
+            font-size: 16px;
+            color: white;
+        }
+        
+        /* 分类标签 */
+        .category-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 0 30px;
+            margin-bottom: 30px;
+        }
+        
+        .category-tab {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 20px;
+            background: var(--bg-card);
+            color: var(--text-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+        
+        .category-tab:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .category-tab.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* 文章卡片 */
+        .blog-list-container {
+            padding: 0 30px;
+        }
+        
+        .article-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .article-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+        }
+        
+        .article-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        
+        .article-category {
+            display: inline-block;
+            padding: 4px 12px;
+            background: var(--primary-light);
+            color: var(--primary);
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .article-date {
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+        
+        .article-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+        
+        .article-summary {
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+        
+        .article-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .article-tag {
+            padding: 2px 10px;
+            background: rgba(0,0,0,0.05);
+            border-radius: 12px;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+        
+        .no-articles {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-muted);
+            font-size: 16px;
+        }
+        
+        /* 移动端适配 */
+        @media (max-width: 767px) {
+            .blog-header {
+                margin: 16px;
+                padding: 30px 16px;
+            }
+            
+            .blog-header h1 {
+                font-size: 22px;
+            }
+            
+            .blog-header p {
+                font-size: 14px;
+            }
+            
+            .category-tabs {
+                padding: 0 16px;
+                margin-bottom: 20px;
+            }
+            
+            .category-tab {
+                padding: 6px 14px;
+                font-size: 13px;
+            }
+            
+            .blog-list-container {
+                padding: 0 16px;
+            }
+            
+            .article-card {
+                padding: 16px;
+            }
+            
+            .article-title {
+                font-size: 16px;
+            }
+            
+            .article-summary {
+                font-size: 13px;
+            }
+        }
+        
+        /* 平板适配 */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .blog-header {
+                margin: 20px;
+            }
+            
+            .category-tabs {
+                padding: 0 20px;
+            }
+            
+            .blog-list-container {
+                padding: 0 20px;
+            }
+        }
+    </style>
+    
+    <script src="../assets/js/jquery-1.11.1.min.js"></script>
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="page-body">
+    <!-- 移动端遮罩 -->
+    <div class="mobile-overlay"></div>
+    <!-- 移动端菜单按钮 -->
+    <div class="mobile-menu-toggle">
+        <i class="fa fa-bars"></i>
+    </div>
+    
+    <div class="page-container">
+        <div class="sidebar-menu toggle-others fixed">
+            <div class="sidebar-menu-inner">
+                <header class="logo-env">
+                    <div class="logo">
+                        <a href="index.html" class="logo-expanded">
+                            <img src="../assets/images/Ofree/OnlyFree.png" width="100%" alt="logo" />
+                        </a>
+                        <a href="index.html" class="logo-collapsed">
+                            <img src="../assets/images/Ofree/ofree80/OFree.png" width=40 alt="OFREE Logo" />
+                        </a>
+                    </div>
+                    <div class="mobile-menu-toggle visible-xs">
+                        <a href="#" data-toggle="user-info-menu">
+                            <i class="linecons-cog"></i>
+                        </a>
+                        <a href="#" data-toggle="mobile-menu">
+                            <i class="fa-bars"></i>
+                        </a>
+                    </div>
+                </header>
+                <div class="main-menu-container" style="height: calc(100vh - 120px); overflow-y: auto;">
+                    <ul id="main-menu" class="main-menu">
+                        <li>
+                            <a href="index.html">
+                                <i class="linecons-home"></i>
+                                <span class="tooltip-blue">首页</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="blog.html">
+                                <i class="linecons-doc"></i>
+                                <span class="tooltip-blue">博客</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="about.html">
+                                <i class="linecons-heart"></i>
+                                <span class="tooltip-blue">关于本站</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <nav class="navbar user-info-navbar" role="navigation">
+                <ul class="user-info-menu left-links list-inline list-unstyled">
+                    <li class="hidden-sm hidden-xs">
+                        <a href="#" data-toggle="sidebar">
+                            <i class="fa-bars"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- 博客页面标题 -->
+            <div class="blog-header">
+                <h1>OFree 博客</h1>
+                <p>发现优质免费资源，分享实用技巧</p>
+            </div>
+
+            <!-- 分类筛选 -->
+            <div class="category-tabs" id="category-tabs">
+                <!-- 由JavaScript动态生成 -->
+            </div>
+
+            <!-- 文章列表 -->
+            <div class="blog-list-container" id="blog-list-container">
+                <!-- 由JavaScript动态生成 -->
+            </div>
+            
+            <br />
+            
+            <footer class="main-footer sticky footer-type-1">
+                <div class="footer-inner">
+                    <div class="footer-text">
+                        &copy; 2025-<script>document.write(new Date().getFullYear())</script>
+                        <a href="../cn/about.html"><strong>OFree</strong></a> design by <a href="https://www.viggoz.com" target="_blank"><strong>XZY</strong></a>
+                    </div>
+                    <div class="go-up">
+                        <a href="#" rel="go-top">
+                            <i class="fa-angle-up"></i>
+                        </a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- 博客渲染脚本 -->
+    <script src="./blog-render.js"></script>
+    <script src="./render.js"></script>
+    <script src="../assets/js/lozad.js"></script>
+    <script src="../assets/js/features.js"></script>
+    
+    <script type="text/javascript">
+    $(document).ready(function() {
+        // 初始化博客列表
+        initBlogList();
+        
+        // 初始化移动端菜单
+        initMobileMenu();
+        
+        // 图片懒加载
+        const observer = lozad();
+        observer.observe();
+    });
+    </script>
+</body>
+
+</html>
