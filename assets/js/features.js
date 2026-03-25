@@ -47,7 +47,13 @@
   function getStorage(key, defaultValue) {
     try {
       const value = localStorage.getItem(key);
-      return value ? JSON.parse(value) : defaultValue;
+      if (value === null) return defaultValue;
+      // 尝试解析 JSON，如果失败就返回原始值
+      try {
+        return JSON.parse(value);
+      } catch (e) {
+        return value;
+      }
     } catch (e) {
       return defaultValue;
     }
@@ -60,7 +66,12 @@
    */
   function setStorage(key, value) {
     try {
-      localStorage.setItem(key, JSON.stringify(value));
+      // 如果是字符串类型，直接存储；否则用 JSON 序列化
+      if (typeof value === 'string') {
+        localStorage.setItem(key, value);
+      } else {
+        localStorage.setItem(key, JSON.stringify(value));
+      }
     } catch (e) {
       console.warn('localStorage 保存失败:', e);
     }

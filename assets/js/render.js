@@ -229,7 +229,7 @@ function initMenuInteractions() {
 document.addEventListener('DOMContentLoaded', async function() {
   try {
     // 加载JSON数据
-    const response = await fetch('data.json');
+    const response = await fetch('data/data.json');
     const data = await response.json();
     
     // 获取总容器
@@ -249,16 +249,29 @@ document.addEventListener('DOMContentLoaded', async function() {
     const mainMenu = document.getElementById('main-menu');
     if (mainMenu) {
       
-      // 保存关于本站项
-      const aboutItem = mainMenu.querySelector('li');
-      const aboutItemHtml = aboutItem ? aboutItem.outerHTML : '';
-      
       // 清空现有菜单项
       mainMenu.innerHTML = '';
       
       // 生成并添加动态菜单项
       const dynamicMenuHtml = generateMenuItems(data);
-      mainMenu.innerHTML = dynamicMenuHtml + aboutItemHtml;
+      mainMenu.innerHTML = dynamicMenuHtml;
+      
+      // 硬编码添加博客和关于本站菜单项（确保它们总是存在）
+      const staticMenuHtml = `
+        <li>
+          <a href="pages/blog.html">
+            <i class="linecons-doc"></i>
+            <span class="tooltip-blue">博客</span>
+          </a>
+        </li>
+        <li>
+          <a href="pages/about.html">
+            <i class="linecons-heart"></i>
+            <span class="tooltip-blue">关于本站</span>
+          </a>
+        </li>
+      `;
+      mainMenu.innerHTML += staticMenuHtml;
       
       // 重新初始化菜单交互
       initMenuInteractions();

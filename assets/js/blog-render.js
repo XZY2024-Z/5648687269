@@ -1,33 +1,107 @@
 /**
  * OFree 博客渲染脚本
  * 负责加载和渲染博客文章列表、文章详情、首页推荐文章
+ * 支持从独立 Markdown 文件加载文章内容
  */
 
 const Blog = {
   data: null,
-  currentLang: 'cn',
   
   /**
-   * 初始化博客模块
-   * @param {string} lang - 语言设置 'cn' 或 'en'
+   * 获取正确的路径前缀（根据当前页面位置自动检测）
+   * @returns {string} 路径前缀
    */
-  async init(lang = 'cn') {
-    this.currentLang = lang;
-    await this.loadData();
+  getPathPrefix() {
+    const currentPath = window.location.pathname;
+    if (currentPath.includes('/pages/')) {
+      return '../';
+    }
+    return './';
   },
   
   /**
-   * 加载博客数据
+   * 加载博客元数据
    */
   async loadData() {
     try {
-      const response = await fetch('./blog-data.json');
+      const prefix = this.getPathPrefix();
+      const response = await fetch(`${prefix}data/blog-data.json`);
       this.data = await response.json();
       return this.data;
     } catch (error) {
       console.error('加载博客数据失败:', error);
       return null;
     }
+  },
+  
+  /**
+   * 加载 Markdown 文件内容
+   * @param {string} filePath - MD 文件路径
+   */
+  async loadMarkdownFile(filePath) {
+    try {
+      const prefix = this.getPathPrefix();
+      const response = await fetch(`${prefix}${filePath}`);
+      if (!response.ok) {
+        throw new Error('文件不存在');
+      }
+      const markdown = await response.text();
+      return markdown;
+    } catch (error) {
+      console.error('加载Markdown文件失败:', error);
+      return null;
+    }
+  },
+  
+  /**
+   * 解析 Markdown 为 HTML
+   * @param {string} markdown - Markdown 文本
+   */
+  parseMarkdown(markdown) {
+    if (!markdown) return '';
+    
+    // 使用 marked 库解析（如果已加载）
+    if (typeof marked !== 'undefined') {
+      return marked.parse(markdown);
+    }
+    
+    // 简单的 Markdown 解析器（备用）
+    return markdown
+      // 标题
+      .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+      .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+      .replace(/^# (.+)$/gm, '<h1>$1</h1>')
+      // 粗体
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      // 斜体
+      .replace(/\*(.+?)\*/g, '<em>$1</em>')
+      // 链接
+      .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" target="_blank">$1</a>')
+      // 无序列表
+      .replace(/^- (.+)$/gm, '<li>$1</li>')
+      // 有序列表
+      .replace(/^\d+\. (.+)$/gm, '<li>$1</li>')
+      // 代码块
+      .replace(/```(\w+)?\n([\s\S]+?)```/g, '<pre><code class="language-$1">$2</code></pre>')
+      // 行内代码
+      .replace(/`(.+?)`/g, '<code>$1</code>')
+      // 表格（简单处理）
+      .replace(/\|(.+)\|/g, function(match) {
+        const cells = match.split('|').filter(c => c.trim());
+        if (cells.some(c => c.trim().match(/^-+$/))) {
+          return ''; // 分隔线跳过
+        }
+        return '<tr>' + cells.map(c => `<td>${c.trim()}</td>`).join('') + '</tr>';
+      })
+      // 段落
+      .replace(/\n\n/g, '</p><p>')
+      // 换行
+      .replace(/\n/g, '<br>')
+      // 清理
+      .replace(/<p><\/p>/g, '')
+      .replace(/<p><br><\/p>/g, '')
+      .replace(/<p>(<[hluot])/g, '$1')
+      .replace(/(<\/[hluot].*?>)<\/p>/g, '$1');
   },
   
   /**
@@ -45,7 +119,7 @@ const Blog = {
    */
   getArticlesByCategory(category) {
     if (!this.data) return [];
-    if (category === '全部' || category === 'All') {
+    if (category === '全部') {
       return this.data.articles;
     }
     return this.data.articles.filter(article => article.category === category);
@@ -70,8 +144,9 @@ const Blog = {
       return `<div class="no-articles">暂无推荐文章</div>`;
     }
     
+    const prefix = this.getPathPrefix();
     return articles.map(article => `
-      <div class="article-card" onclick="window.location.href='./blog-post.html?id=${article.id}'">
+      <div class="article-card" onclick="window.location.href='${prefix}pages/blog-post.html?id=${article.id}'">
         <div class="article-card-header">
           <span class="article-category">${article.category}</span>
           <span class="article-date">${article.date}</span>
@@ -95,8 +170,9 @@ const Blog = {
       return `<div class="no-articles">该分类下暂无文章</div>`;
     }
     
+    const prefix = this.getPathPrefix();
     return articles.map(article => `
-      <div class="article-card article-card-full" onclick="window.location.href='./blog-post.html?id=${article.id}'">
+      <div class="article-card article-card-full" onclick="window.location.href='${prefix}pages/blog-post.html?id=${article.id}'">
         <div class="article-card-header">
           <span class="article-category">${article.category}</span>
           <span class="article-date">${article.date}</span>
@@ -146,19 +222,24 @@ const Blog = {
    * 渲染文章详情页
    * @param {string} articleId - 文章ID
    */
-  renderArticleDetail(articleId) {
+  async renderArticleDetail(articleId) {
     const article = this.getArticleById(articleId);
     if (!article) {
       return `<div class="no-articles">文章不存在</div>`;
     }
     
-    // 将Markdown格式的内容转换为HTML
-    const content = this.parseMarkdown(article.content);
+    // 加载 Markdown 文件内容
+    let content = '';
+    if (article.file) {
+      const markdown = await this.loadMarkdownFile(article.file);
+      content = this.parseMarkdown(markdown);
+    }
     
+    const prefix = this.getPathPrefix();
     return `
       <article class="article-detail">
         <div class="article-detail-header">
-          <a href="./blog.html" class="back-link">← 返回博客列表</a>
+          <a href="${prefix}pages/blog.html" class="back-link">← 返回博客列表</a>
           <span class="article-category">${article.category}</span>
         </div>
         <h1 class="article-detail-title">${article.title}</h1>
@@ -173,33 +254,6 @@ const Blog = {
         </div>
       </article>
     `;
-  },
-  
-  /**
-   * 简单的Markdown解析器
-   * @param {string} text - Markdown文本
-   */
-  parseMarkdown(text) {
-    if (!text) return '';
-    
-    return text
-      // 标题
-      .replace(/^## (.+)$/gm, '<h2>$1</h2>')
-      .replace(/^### (.+)$/gm, '<h3>$1</h3>')
-      // 段落
-      .replace(/\n\n/g, '</p><p>')
-      // 换行
-      .replace(/\n/g, '<br>')
-      // 列表
-      .replace(/^\d+\. (.+)$/gm, '<li>$1</li>')
-      // 包裹段落
-      .replace(/^(?!<[hlu])/gm, '<p>')
-      .replace(/(?<![>])$/gm, '</p>')
-      // 清理空段落
-      .replace(/<p><\/p>/g, '')
-      .replace(/<p><br><\/p>/g, '')
-      // 列表包装
-      .replace(/(<li>.*<\/li>)+/g, '<ol>$&</ol>');
   },
   
   /**
@@ -227,12 +281,13 @@ const Blog = {
     const articles = this.getRelatedArticles(articleId);
     if (articles.length === 0) return '';
     
+    const prefix = this.getPathPrefix();
     return `
       <div class="related-articles">
         <h4>相关文章推荐</h4>
         <div class="related-articles-list">
           ${articles.map(article => `
-            <div class="article-card article-card-small" onclick="window.location.href='./blog-post.html?id=${article.id}'">
+            <div class="article-card article-card-small" onclick="window.location.href='${prefix}pages/blog-post.html?id=${article.id}'">
               <span class="article-category">${article.category}</span>
               <h5 class="article-title">${article.title}</h5>
               <span class="article-date">${article.date}</span>
@@ -246,7 +301,7 @@ const Blog = {
 
 // 初始化首页推荐文章
 async function initFeaturedArticles() {
-  await Blog.init('cn');
+  await Blog.loadData();
   const container = document.getElementById('featured-articles');
   if (container) {
     container.innerHTML = Blog.renderFeaturedCards(3);
@@ -255,7 +310,7 @@ async function initFeaturedArticles() {
 
 // 初始化博客列表页
 async function initBlogList() {
-  await Blog.init('cn');
+  await Blog.loadData();
   
   // 渲染分类标签
   const tabsContainer = document.getElementById('category-tabs');
@@ -272,7 +327,7 @@ async function initBlogList() {
 
 // 初始化文章详情页
 async function initArticleDetail() {
-  await Blog.init('cn');
+  await Blog.loadData();
   
   // 从URL获取文章ID
   const urlParams = new URLSearchParams(window.location.search);
@@ -280,7 +335,7 @@ async function initArticleDetail() {
   
   const container = document.getElementById('article-detail-container');
   if (container && articleId) {
-    container.innerHTML = Blog.renderArticleDetail(articleId);
+    container.innerHTML = await Blog.renderArticleDetail(articleId);
     
     // 渲染相关文章
     const relatedContainer = document.getElementById('related-articles-container');

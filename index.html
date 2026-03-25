@@ -2,6 +2,26 @@
 <html lang="zh">
 
 <head>
+    <!-- 在页面渲染前立即设置主题，避免闪烁 -->
+    <script>
+        (function() {
+            try {
+                const savedTheme = localStorage.getItem('ofree-theme');
+                if (savedTheme) {
+                    // 处理可能的 JSON 格式
+                    let theme = savedTheme;
+                    try {
+                        theme = JSON.parse(savedTheme);
+                    } catch(e) {
+                        // 不是 JSON，直接使用原始值
+                    }
+                    document.documentElement.setAttribute('data-theme', theme);
+                }
+            } catch(e) {
+                console.error('读取主题失败:', e);
+            }
+        })();
+    </script>
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
     (adsbygoogle = window.adsbygoogle || []).push({
@@ -100,13 +120,13 @@
                 <div class="main-menu-container" style="height: calc(100vh - 120px); overflow-y: auto;">
                     <ul id="main-menu" class="main-menu">
                         <li>
-                            <a href="blog.html">
+                            <a href="pages/blog.html">
                                 <i class="linecons-doc"></i>
                                 <span class="tooltip-blue">博客</span>
                             </a>
                         </li>
                         <li>
-                            <a href="about.html">
+                            <a href="pages/about.html">
                                 <i class="linecons-heart"></i>
                                 <span class="tooltip-blue">关于本站</span>
                             </a>
@@ -139,7 +159,7 @@
             <div class="featured-articles-section">
                 <h4 class="text-gray">
                     <i class="linecons-star" style="margin-right: 7px;"></i>热门文章推荐
-                    <a href="./blog.html" class="view-all-link">查看全部 →</a>
+                    <a href="./pages/blog.html" class="view-all-link">查看全部 →</a>
                 </h4>
                 <div id="featured-articles" class="featured-articles-grid">
                     <!-- 由JavaScript动态生成 -->
@@ -154,7 +174,7 @@
                 <div class="footer-inner">
                     <div class="footer-text">
                         &copy; 2025-<script>document.write(new Date().getFullYear())</script>
-                        <a href="./about.html"><strong>OFree</strong></a> design by <a href="https://www.viggoz.com" target="_blank"><strong>XZY</strong></a>
+                        <a href="./pages/about.html"><strong>OFree</strong></a> design by <a href="https://www.viggoz.com" target="_blank"><strong>XZY</strong></a>
                     </div>
                     <div class="go-up">
                         <a href="#" rel="go-top">
@@ -167,9 +187,9 @@
     </div>
 
     <!-- 卡片加载 -->
-    <script src="./render.js"></script>
+    <script src="./assets/js/render.js"></script>
     <!-- 博客渲染脚本 -->
-    <script src="./blog-render.js"></script>
+    <script src="./assets/js/blog-render.js"></script>
     <!-- 锚点平滑移动 -->
     <script type="text/javascript">
     $(document).ready(function() {
