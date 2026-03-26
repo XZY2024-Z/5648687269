@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>页面跳转 - OFREE</title>
+    
+    <!-- 在页面渲染前立即设置主题，避免闪烁 -->
+    <script>
+        (function() {
+            try {
+                const savedTheme = localStorage.getItem('ofree-theme');
+                if (savedTheme) {
+                    let theme = savedTheme;
+                    try {
+                        theme = JSON.parse(savedTheme);
+                    } catch(e) {
+                    }
+                    document.documentElement.setAttribute('data-theme', theme);
+                }
+            } catch(e) {
+                console.error('读取主题失败:', e);
+            }
+        })();
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --bg-primary: #f5f7fa;
+            --bg-card: #ffffff;
+            --text-primary: #2c3e50;
+            --text-secondary: #7f8c8d;
+            --primary: #3498db;
+            --primary-light: #e3f2fd;
+            --border: #e0e0e0;
+            --shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        [data-theme="dark"] {
+            --bg-primary: #1a1a2e;
+            --bg-card: #16213e;
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --primary: #60a5fa;
+            --primary-light: #1e3a5f;
+            --border: #2d3748;
+            --shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 48px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            max-width: 500px;
+            width: 100%;
+        }
+        
+        .icon {
+            font-size: 64px;
+            margin-bottom: 24px;
+            color: var(--primary);
+        }
+        
+        h1 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+        
+        p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+        
+        .countdown {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary);
+            margin: 24px 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 32px 24px;
+            }
+            
+            h1 {
+                font-size: 20px;
+            }
+            
+            p {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">🔄</div>
+        <h1>页面已迁移</h1>
+        <p>感谢您访问 OFREE！</p>
+        <p>网站已升级，页面路径已调整。</p>
+        <p class="countdown"><span id="countdown">5</span> 秒后自动跳转...</p>
+        <a href="../index.html" class="btn" id="manualBtn">立即前往首页</a>
+    </div>
+    
+    <script>
+        let seconds = 5;
+        const countdownEl = document.getElementById('countdown');
+        
+        function updateCountdown() {
+            countdownEl.textContent = seconds;
+            if (seconds <= 0) {
+                window.location.href = '../index.html';
+            } else {
+                seconds--;
+                setTimeout(updateCountdown, 1000);
+            }
+        }
+        
+        document.getElementById('manualBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location.href = '../index.html';
+        });
+        
+        updateCountdown();
+    </script>
+</body>
+</html>
