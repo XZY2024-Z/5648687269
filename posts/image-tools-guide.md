@@ -1,65 +1,70 @@
-在日常工作和生活中，我们经常需要对图片进行处理。本文推荐10个免费的在线图像处理工具。
+在日常工作和生活中，我们经常需要对图片进行处理。本文推荐几个免费的在线图像处理工具。
 
 ## 一、iloveimg
 
 iloveimg是一个功能全面的图像处理平台，支持图片压缩、格式转换、裁剪、调整大小等功能。
 
 **主要功能：**
+
 - 图片压缩（支持批量）
 - 格式转换
 - 图片裁剪
 - 调整大小
 - 添加水印
 
-**网址：** https://www.iloveimg.com
+**网址：** <https://www.iloveimg.com>
 
 ## 二、TinyPNG
 
 TinyPNG专注于PNG图片压缩，压缩率高且保持画质，是网页设计师的必备工具。
 
 **特点：**
+
 - 压缩率高，可达70%以上
 - 保持透明背景
 - 支持批量处理
 - 免费使用
 
-**网址：** https://tinypng.com
+**网址：** <https://tinypng.com>
 
 ## 三、Remove.bg
 
 Remove.bg可以一键去除图片背景，效果出色，非常适合制作证件照和产品图。
 
 **特点：**
+
 - AI智能抠图
 - 效果精准
 - 操作简单
 - 支持API调用
 
-**网址：** https://www.remove.bg
+**网址：** <https://www.remove.bg>
 
 ## 四、Canva
 
 Canva是一个在线设计工具，提供大量模板，可以轻松制作海报、社交媒体图片等。
 
 **特点：**
+
 - 海量模板
 - 拖拽式操作
 - 团队协作
 - 多平台适配
 
-**网址：** https://www.canva.com
+**网址：** <https://www.canva.com>
 
 ## 五、Photopea
 
 Photopea是一个在线版Photoshop，界面和功能与PS相似，支持PSD文件编辑。
 
 **特点：**
+
 - 完全免费
 - 支持PSD格式
 - 功能强大
 - 无需安装
 
-**网址：** https://www.photopea.com
+**网址：** <https://www.photopea.com>
 
 ## 总结
 
